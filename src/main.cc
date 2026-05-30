@@ -12,7 +12,11 @@ std::vector<std::string> get_repos() {
 
 	for (const auto & entry : std::filesystem::directory_iterator(repo_path)) {
 		if (entry.is_directory()) {
-			repo_dirs.push_back(entry.path());
+			if (git_repository_open_ext(
+						NULL, entry.path().c_str(), GIT_REPOSITORY_OPEN_NO_SEARCH, NULL
+						) == 0) {
+				repo_dirs.push_back(entry.path());
+			}
 		}
 	}
 
