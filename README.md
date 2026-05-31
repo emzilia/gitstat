@@ -1,2 +1,2 @@
 # gitstat
-checks the status of a list of git repos as notifications
+checks the status of a list of git repos, sends notifications based on the status
